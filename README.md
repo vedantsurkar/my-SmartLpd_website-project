@@ -1,45 +1,176 @@
-SmartLPD - License Plate Detection System
-This is a complete license plate detection and fine management system created as part of my learning.
+# SmartLPD - Smart License Plate Detection System
 
-Technologies Used
-Backend: Java Spring Boot
-Frontend: HTML, CSS, JavaScript
-ML Service: Python Flask with OpenCV
-Database: MySQL
-Authentication: JWT with Spring Security
+This is a complete web application for license plate detection and traffic fine management, built as a learning project.
 
-Project Structure
-backend/ – Spring Boot REST API
-frontend/ – Web interface with HTML/CSS/JS
-ml-service/ – License plate detection using Python
-application.properties – Database and configuration
+## 📁 Project Structure
 
-How to Run
+```
+smartlpd/
+├── backend/           # Spring Boot REST API (Java)
+├── frontend/          # Web Interface (HTML/CSS/JavaScript)
+└── ml-service/        # License Plate Detection (Python)
+```
 
-Prerequisites:
-1.Install Java 17+
-2.Install MySQL and create smartlpd database
-3.Install Python 3.8+ and Tesseract OCR
-4.Install Maven for Java build
+## 🛠️ Technologies Used
 
-Steps:
-1.Start MySQL database
-Run Backend (Spring Boot):
+### Backend (Java)
+- Spring Boot
+- Spring Security with JWT
+- Spring Data JPA
+- MySQL Database
+
+### Frontend
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Font Awesome Icons
+
+### ML Service (Python)
+- Flask
+- OpenCV
+- Tesseract OCR
+- NumPy
+
+## 🚀 How to Run
+
+### Step 1: Setup Database
+1. Install MySQL
+2. Create database:
+   ```sql
+   CREATE DATABASE smartlpd;
+   ```
+
+### Step 2: Configure Backend
+1. Navigate to backend folder:
+   ```bash
    cd backend
+   ```
+2. Update `src/main/resources/application.properties` with your MySQL credentials
+3. Build and run:
+   ```bash
+   mvn clean install
    mvn spring-boot:run
+   ```
 
-2.Run ML Service:
+### Step 3: Setup ML Service
+1. Install Python dependencies:
+   ```bash
    cd ml-service
+   pip install -r requirements.txt
+   ```
+2. Install Tesseract OCR:
+   - Windows: `choco install tesseract`
+   - Ubuntu: `sudo apt install tesseract-ocr`
+3. Run ML service:
+   ```bash
    python app.py
+   ```
 
-3.Open Frontend:
-   Open frontend/index.html in any browser
-   Or use live server: npx live-server frontend   
+### Step 4: Launch Frontend
+1. Open the frontend folder
+2. Open `index.html` in your web browser
+3. Or use live server:
+   ```bash
+   npx live-server frontend
+   ```
 
+## 🔗 Access Points
 
-Test Credentials:
-Citizen: testuser / password123
-Authority: testauthority / password123
+- **Frontend**: `http://localhost:5500` (or file:// path)
+- **Backend API**: `http://localhost:8080`
+- **ML Service**: `http://localhost:5000`
 
-Access the application at: http://localhost:5500 (frontend) with backend running on port 8080 and ML service on port 5000.
-   
+## 👥 User Roles
+
+### 👤 Citizen
+- Register and login
+- Check fines by license plate
+- Pay outstanding fines
+- View payment history
+
+### 👮 Government Authority
+- Register with @gov.ac.in email only
+- Login with username/email
+- Access license plate detection
+- Issue and manage fines
+- View system statistics
+
+## 📞 Test Users
+
+### For Quick Testing:
+
+#### Citizen Account:
+- **Username**: `testuser`
+- **Password**: `password123`
+- **Create URL**: `http://localhost:8080/api/auth/create-test-user`
+
+#### Authority Account:
+- **Username**: `testauthority`
+- **Password**: `password123`
+- **Create URL**: `http://localhost:8080/api/auth/create-test-authority`
+
+## 🐛 Troubleshooting
+
+### Common Issues:
+
+1. **MySQL Connection Error**
+   - Ensure MySQL service is running
+   - Verify database credentials in `application.properties`
+   - Check if database `smartlpd` exists
+
+2. **Tesseract OCR Not Found**
+   - Install Tesseract on your system
+   - Update path in `ml-service/app.py` if needed
+
+3. **CORS Errors in Browser**
+   - Ensure all services are running
+   - Check browser console for specific errors
+   - Verify backend CORS configuration
+
+4. **Authentication Issues**
+   - Clear browser localStorage
+   - Check JWT token in Authorization header
+   - Verify user role permissions
+
+## 📊 Features
+
+- ✅ User registration and login
+- ✅ Role-based access control
+- ✅ License plate detection from images
+- ✅ Camera capture support
+- ✅ Fine management system
+- ✅ Online payment simulation
+- ✅ Responsive web design
+- ✅ Real-time status updates
+
+## 📱 Pages
+
+1. **Home** (`index.html`) - Landing page
+2. **Login** (`login.html`) - User authentication
+3. **Signup** (`signup.html`) - Account creation
+4. **Detection** (`detect.html`) - License plate detection (Authority only)
+5. **Check Fines** (`check-fine.html`) - Citizen fine portal
+6. **Manage Fines** (`manage-fines.html`) - Authority management panel
+
+## 🔧 Configuration Files
+
+### Important Files:
+- `backend/src/main/resources/application.properties` - Spring Boot configuration
+- `frontend/js/auth.js` - Authentication logic
+- `ml-service/app.py` - ML service configuration
+
+## 📝 Notes
+
+- This is a learning project, not production-ready
+- Use strong passwords for production
+- Implement HTTPS for security
+- Add input validation and sanitization
+- Consider using environment variables for secrets
+
+## 📄 License
+
+Educational Use Only
+
+---
+
+*Created as part of a web development learning journey*
