@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Fines - SmartLPD</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/detect.css">
+  <link rel="stylesheet" href="css/fines.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <i class="fas fa-car-alt"></i>
+        Smart<span>LPD</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="detect.html">Detection</a></li>
+          <li><a href="check-fine.html" class="active">Check Fines</a></li>
+          <li><a href="manage-fines.html" id="authorityLink" style="display:none;">Manage Fines</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons" id="authButtons">
+        <!-- Dynamically filled -->
+      </div>
+    </div>
+  </header>
+
+  <section class="detection">
+    <div class="detection-container">
+      <div class="section-title">
+        <h2>Check Traffic Fines</h2>
+        <p>Enter your vehicle license plate number to check for any outstanding fines</p>
+      </div>
+      
+      <div class="detection-card">
+        <h3><i class="fas fa-search"></i> Search Fines</h3>
+        <div class="form-group">
+          <label for="licensePlate">License Plate Number</label>
+          <input type="text" id="licensePlate" placeholder="Enter your license plate (e.g., ABC123)" required>
+        </div>
+        <div class="action-buttons">
+          <button class="btn btn-primary" id="checkFineBtn">
+            <i class="fas fa-search"></i> Check Fines
+          </button>
+        </div>
+      </div>
+
+      <div class="results-container" id="resultsSection" style="display:none;">
+        <h3><i class="fas fa-list"></i> Fine Details</h3>
+        <div class="results-box">
+          <div id="finesList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/check-fine.js"></script>
+</body>
+</html>

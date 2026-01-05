@@ -1,0 +1,339 @@
+/* Detection Section */
+.detection {
+  background-color: white;
+  padding: 5rem 2rem;
+  min-height: 80vh;
+}
+
+.detection-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.detection-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.detection-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid #e2e8f0;
+}
+
+.detection-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detection-card h3 i {
+  color: var(--primary);
+}
+
+.drop-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.drop-zone:hover, .drop-zone.active {
+  border-color: var(--primary);
+  background-color: #f0f9ff;
+}
+
+.drop-zone i {
+  font-size: 2.5rem;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+.drop-zone.active i {
+  color: var(--primary);
+}
+
+.preview-container {
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #f8fafc;
+  margin-bottom: 1.5rem;
+}
+
+.preview-container img,
+.preview-container video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Camera Controls */
+.camera-controls {
+  margin-bottom: 1.5rem;
+  display: none; /* Hidden by default */
+}
+
+.camera-preview {
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius);
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #000;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.camera-preview video {
+  max-width: 100%;
+  max-height: 100%;
+  background: #000;
+  object-fit: cover;
+}
+
+.capture-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-accent {
+  background-color: var(--accent);
+  color: var(--secondary);
+  border: none;
+}
+
+.btn-accent:hover {
+  background-color: #eab308;
+  transform: translateY(-2px);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.action-buttons .btn {
+  flex: 1;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.results-container {
+  margin-top: 3rem;
+}
+
+.results-box {
+  background: #f8fafc;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-top: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+.plate-preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.plate-image {
+  width: 200px;
+  height: 100px;
+  background: white;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--secondary);
+}
+
+.extracted-text {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--secondary);
+  margin: 1rem 0;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fine Management Integration */
+.fine-actions-detection {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive Design for Detection */
+@media (max-width: 768px) {
+  .detection {
+    padding: 3rem 1rem;
+  }
+  
+  .detection-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .detection-card {
+    padding: 1.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .action-buttons .btn {
+    width: 100%;
+  }
+  
+  .plate-image {
+    width: 150px;
+    height: 75px;
+    font-size: 1rem;
+  }
+  
+  .extracted-text {
+    font-size: 1.2rem;
+    min-height: 60px;
+  }
+  
+  .capture-buttons {
+    flex-direction: column;
+  }
+  
+  .capture-buttons .btn {
+    width: 100%;
+  }
+}
+
+/* Loading Animation for Detection */
+.detection-loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+/* Enhanced Drop Zone Styles */
+.drop-zone.drag-over {
+  border-color: var(--primary);
+  background-color: #f0f9ff;
+  transform: scale(1.02);
+}
+
+.drop-zone.success {
+  border-color: var(--success);
+  background-color: #f0fdf4;
+}
+
+.drop-zone.error {
+  border-color: var(--danger);
+  background-color: #fef2f2;
+}
+
+/* Camera Overlay */
+.camera-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.camera-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60%;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.3);
+}
+
+/* Detection Confidence Indicator */
+.confidence-indicator {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.confidence-bar {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--danger), var(--accent), var(--success));
+  transition: width 0.3s ease;
+}
+
+.confidence-text {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-top: 0.25rem;
+}
+
+/* Authority-specific Styles */
+.authority-features {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 1px solid #fcd34d;
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.authority-features h4 {
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.authority-features p {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin: 0;
+}

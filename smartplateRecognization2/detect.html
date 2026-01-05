@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>License Plate Detection - SmartLPD</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/detect.css">
+</head>
+<body>
+  <!-- Authority Check Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userRole = localStorage.getItem('userRole');
+        if (userRole !== 'AUTHORITY') {
+            alert('Access denied. License plate detection is only available for government authorities.');
+            window.location.href = 'index.html';
+        }
+    });
+  </script>
+
+  <!-- Header -->
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <i class="fas fa-car-alt"></i>
+        Smart<span>LPD</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="detect.html" class="active">Detection</a></li>
+          <li><a href="check-fine.html">Check Fines</a></li>
+          <li><a href="manage-fines.html" id="authorityLink" style="display:none;">Manage Fines</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons" id="authButtons">
+        <button class="btn btn-outline" onclick="window.location.href='login.html'">
+          <i class="fas fa-sign-in-alt"></i> Login
+        </button>
+        <button class="btn btn-primary" onclick="window.location.href='signup.html'">
+          <i class="fas fa-user-plus"></i> Sign Up
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Detection Section -->
+  <section class="detection">
+    <div class="detection-container">
+      <div class="section-title">
+        <h2>License Plate Detection</h2>
+        <p>Upload an image or capture one using your camera to detect and extract license plate information</p>
+      </div>
+      
+      <div class="detection-cards">
+        <!-- Input Card -->
+        <div class="detection-card">
+          <h3><i class="fas fa-cloud-upload-alt"></i> Input Source</h3>
+          <div class="drop-zone" id="dropZone">
+            <i class="fas fa-file-upload"></i>
+            <h4>Drag & Drop Image Here</h4>
+            <p>Supported formats: JPG, PNG, WEBP</p>
+          </div>
+          <div class="action-buttons">
+            <button class="btn btn-primary" id="fileInputBtn">
+              <i class="fas fa-folder-open"></i> Choose File
+            </button>
+            <button class="btn btn-accent" id="cameraBtn">
+              <i class="fas fa-camera"></i> Capture Image
+            </button>
+            <button class="btn btn-outline" id="resetBtn">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+          </div>
+          <input type="file" id="fileInput" accept="image/*" hidden>
+        </div>
+        
+        <!-- Preview Card -->
+        <div class="detection-card">
+          <h3><i class="fas fa-eye"></i> Preview</h3>
+          
+          <!-- Regular Preview (shown by default) -->
+          <div class="preview-container" id="preview">
+            <p>No preview available</p>
+          </div>
+          
+          <!-- Camera Controls (Hidden by default) -->
+          <div class="camera-controls" id="cameraControls">
+            <div class="camera-preview">
+              <video id="cameraVideo" autoplay playsinline></video>
+              <canvas id="cameraCanvas" style="display: none;"></canvas>
+            </div>
+            <div class="capture-buttons">
+              <button class="btn btn-primary" id="captureBtn">
+                <i class="fas fa-camera"></i> Take Photo
+              </button>
+              <button class="btn btn-outline" id="closeCameraBtn">
+                <i class="fas fa-times"></i> Close Camera
+              </button>
+            </div>
+          </div>
+
+          <div class="action-buttons">
+            <button class="btn btn-primary" id="detectBtn">
+              <i class="fas fa-search"></i> Detect Plate
+            </button>
+            <button class="btn btn-outline" id="clearBtn">
+              <i class="fas fa-times"></i> Clear
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Results Section -->
+      <div class="results-container">
+        <h3><i class="fas fa-clipboard-check"></i> Detection Results</h3>
+        <div class="results-box">
+          <div class="plate-preview">
+            <div class="plate-image" id="platePreview">
+              LICENSE PLATE
+            </div>
+          </div>
+          <div class="extracted-text" id="extractedText">
+            No results yet. Upload an image and click "Detect Plate".
+          </div>
+          <div class="action-buttons">
+            <button class="btn btn-primary" id="copyBtn">
+              <i class="fas fa-copy"></i> Copy Text
+            </button>
+            <button class="btn btn-outline" id="downloadBtn">
+              <i class="fas fa-download"></i> Download Result
+            </button>
+            <button class="btn btn-outline" id="issueFineBtn" style="display:none;">
+              <i class="fas fa-gavel"></i> Issue Fine
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>SmartLPD</h3>
+        <p>Advanced license plate detection using cutting-edge computer vision technology for various applications.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#how-it-works">How It Works</a></li>
+          <li><a href="detect.html">Detection</a></li>
+          <li><a href="check-fine.html">Check Fines</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <ul>
+          <li><i class="fas fa-envelope"></i> contact@smartlpd.com</li>
+          <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+          <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Innovation City</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2023 SmartLPD. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/detect.js"></script>
+</body>
+</html>
