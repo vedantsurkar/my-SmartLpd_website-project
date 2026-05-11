@@ -1,4 +1,4 @@
-const BACKEND_URL = 'http://localhost:8080';
+const BACKEND_URL = 'https://smartlpd-backend.onrender.com';
 
 // Global variable to store all fines for search filtering
 let allFines = [];
