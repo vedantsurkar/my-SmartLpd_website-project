@@ -13,14 +13,9 @@ import traceback
 app = Flask(__name__)
 CORS(app)
 
-# Set Tesseract path for Windows
-try:
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-    print(f"✅ Tesseract path set to: {pytesseract.pytesseract.tesseract_cmd}")
-except Exception as e:
-    print(f"❌ Tesseract path error: {e}")
-    print("🔍 Trying to find Tesseract in PATH...")
-    pytesseract.pytesseract.tesseract_cmd = 'tesseract'
+# Set Tesseract path for Render/Linux Docker
+pytesseract.pytesseract.tesseract_cmd = "tesseract"
+print(f"✅ Tesseract path set to: {pytesseract.pytesseract.tesseract_cmd}")
 
 def preprocess_image(image_np):
     """Enhanced image preprocessing for better OCR"""
