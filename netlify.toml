@@ -1,0 +1,4 @@
+[build]
+  base = ""
+  publish = "smartplateRecognization2"
+  command = ""
