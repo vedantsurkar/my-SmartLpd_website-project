@@ -55,7 +55,7 @@ const captureBtn = document.getElementById('captureBtn');
 const closeCameraBtn = document.getElementById('closeCameraBtn');
 
 // Backend Configuration
-const BACKEND_URL = 'http://localhost:8080';
+const BACKEND_URL = 'https://smartlpd-backend.onrender.com';
 const DETECT_ENDPOINT = '/api/detect';
 
 // Global variables
