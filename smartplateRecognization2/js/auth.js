@@ -1,5 +1,5 @@
 // Authentication JavaScript - Real API Implementation
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'https://smartlpd-backend.onrender.com/api';
 
 // Utility function to show status messages
 function showAuthStatus(message, type = 'info') {
